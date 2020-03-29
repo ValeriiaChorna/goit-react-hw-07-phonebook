@@ -1,0 +1,85 @@
+.Layout-light {
+  max-width: 1170px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 12px;
+  padding-right: 12px;
+  font-family: Arial, Helvetica, sans-serif;
+  color: black;
+  background-color: whitesmoke;
+}
+
+.Layout-dark {
+  max-width: 1170px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 12px;
+  padding-right: 12px;
+  font-family: Arial, Helvetica, sans-serif;
+  color: white;
+  background-color: black;
+}
+
+.contactEdit {
+  width: 250px;
+  border: 1px solid;
+  display: flex;
+  padding: 10px;
+}
+
+.contactEdit > p {
+  text-align: left;
+}
+
+.submit {
+  display: block;
+  background-color: skyblue;
+}
+
+button {
+  font-size: 8px;
+  margin: 5px;
+  border-radius: 5px;
+}
+
+.btn-dark {
+  color: white;
+  background-color: black;
+}
+
+.btn-light {
+  color: black;
+  background-color: whitesmoke;
+}
+
+.contactList {
+  display: flex;
+  width: 200px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.contactEdit-light {
+  color: black;
+  background-color: whitesmoke;
+}
+
+.contactEdit-dark {
+  color: white;
+  background-color: black;
+}
+
+.deleteButton {
+  color: red;
+  height: 100%;
+}
+
+.light {
+  color: black;
+  background-color: whitesmoke;
+}
+
+.dark {
+  color: white;
+  background-color: black;
+}
