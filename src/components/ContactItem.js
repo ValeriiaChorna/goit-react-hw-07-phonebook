@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import T from 'prop-types';
-import contactsActions from '../redux/contacts/contactsActions';
+import contactsOperations from '../redux/contacts/contactOperations';
 
 function ContactItem({ name, id, number, onRemoveContact }) {
   return (
@@ -18,7 +18,7 @@ function ContactItem({ name, id, number, onRemoveContact }) {
 
 ContactItem.propTypes = {
   name: T.string.isRequired,
-  id: T.string.isRequired,
+  id: T.number.isRequired,
   number: T.string.isRequired,
   onRemoveContact: T.func.isRequired,
 };
@@ -29,7 +29,8 @@ const MapStateToProps = (state, ownProps) => {
 };
 
 const MapDispatchToProps = (dispatch, ownProps) => ({
-  onRemoveContact: () => dispatch(contactsActions.removeContact(ownProps.id)),
+  onRemoveContact: () =>
+    dispatch(contactsOperations.removeContact(ownProps.id)),
 });
 
 export default connect(MapStateToProps, MapDispatchToProps)(ContactItem);

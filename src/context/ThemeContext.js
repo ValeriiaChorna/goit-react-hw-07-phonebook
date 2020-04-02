@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component, createContext } from 'react';
 export const themeConfig = {
   light: {
     fontColor: 'black',
@@ -9,5 +9,34 @@ export const themeConfig = {
     bodybg: 'black',
   },
 };
-const ThemeContext = React.createContext(themeConfig.light);
+
+const Context = createContext(themeConfig.light);
+
+class ThemeContext extends Component {
+  static Consumer = Context.Consumer;
+
+  toggleTheme = () => {
+    this.setState({
+      theme: this.state.theme === 'dark' ? 'light' : 'dark',
+    });
+  };
+
+  state = {
+    theme: 'light',
+    toggleTheme: this.toggleTheme,
+  };
+
+  render() {
+    const { children } = this.props;
+    return (
+      <Context.Provider
+        value={{
+          ...this.state,
+        }}
+      >
+        {children}
+      </Context.Provider>
+    );
+  }
+}
 export default ThemeContext;

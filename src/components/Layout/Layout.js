@@ -3,7 +3,7 @@ import './Layout.css';
 import withTheme from '../../hoc/withTheme';
 
 const Layout = ({ children, theme }) => {
-  const classNameTheme = theme === 'dark' ? 'dark' : 'light';
+  const classNameTheme = theme.theme === 'dark' ? 'dark' : 'light';
   return <div className={`Layout-${classNameTheme}`}>{children}</div>;
 };
 

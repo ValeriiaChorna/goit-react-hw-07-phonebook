@@ -1,57 +1,56 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import Layout from './Layout';
 import ContactEditer from './ContactEditer';
 import ContactList from './ContactList';
 import Filter from './Filter';
 import ButtonThemeChanger from './ButtonThemeChanger';
+import Spiner from './Spiner';
+import Notification from './Notification';
 import ThemeContext from '../context/ThemeContext';
+import contactOperations from '../redux/contacts/contactOperations';
 
 class App extends Component {
-  state = {
-    theme: 'light',
-  };
-
-  toggleTheme = () => {
-    this.setState({
-      theme: this.state.theme === 'dark' ? 'light' : 'dark',
-    });
-  };
+  componentDidMount() {
+    this.props.onFetchContacts();
+  }
 
   render() {
-    const { theme } = this.state;
     return (
-      <ThemeContext.Provider value={this.state.theme}>
+      <ThemeContext>
         <Layout>
           <p>Change theme</p>
-          <ButtonThemeChanger
-            label={theme}
-            theme={theme}
-            toggleTheme={this.toggleTheme}
-          />
-
+          <ButtonThemeChanger />
           <h1>Phonebook</h1>
 
           <h2>Create new contact</h2>
           <ContactEditer />
 
-          {/* {contacts.length > 0 && <h2>Contacts</h2>} */}
-
-          {/* {contacts.length > 1 && (
-            <div>
-            <h3>Find contact by name</h3>
-              <Filter value={filter} onChangeFilter={this.changeFilter} />
-            </div>
-          )} */}
-
+          <h2>Contact</h2>
           <h3>Find contact by name</h3>
           <Filter />
 
-          {/* {visibleContact.length > 0 && <ContactList />} */}
+          {this.props.isLoadingContacts && <Spiner />}
+          {this.props.errorContacts && (
+            <Notification
+              message={`Whoops, something went wrong: ${this.props.errorContacts}`}
+            />
+          )}
+
           <ContactList />
         </Layout>
-      </ThemeContext.Provider>
+      </ThemeContext>
     );
   }
 }
 
-export default App;
+const MapStateToProps = state => ({
+  isLoadingContacts: state.contacts.loading,
+  errorContacts: state.contacts.error,
+});
+
+const mapDispatchToProps = {
+  onFetchContacts: contactOperations.fetchContacts,
+};
+
+export default connect(MapStateToProps, mapDispatchToProps)(App);

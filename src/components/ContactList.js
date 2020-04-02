@@ -17,7 +17,7 @@ ContactList.propTypes = {
   contacts: T.arrayOf(
     T.exact({
       name: T.string,
-      id: T.string,
+      id: T.number,
       number: T.string,
     }),
   ).isRequired,

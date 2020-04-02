@@ -1,0 +1,29 @@
+{
+  "contacts": [
+    {
+      "name": "Мама",
+      "number": "098546782",
+      "id": 2
+    },
+    {
+      "name": "Kati",
+      "number": "54678976",
+      "id": 4
+    },
+    {
+      "name": "Nola",
+      "number": "987654",
+      "id": 5
+    },
+    {
+      "name": "Gary",
+      "number": "6543",
+      "id": 6
+    },
+    {
+      "name": "Лера",
+      "number": "1111",
+      "id": 7
+    }
+  ]
+}

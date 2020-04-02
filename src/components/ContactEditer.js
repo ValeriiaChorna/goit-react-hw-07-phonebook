@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import contactActions from '../redux/contacts/contactsActions';
+import contactOperations from '../redux/contacts/contactOperations';
 import T from 'prop-types';
 
 class ContactEditer extends Component {
@@ -61,6 +61,6 @@ class ContactEditer extends Component {
   }
 }
 
-const MapDispatchToProps = { onAddContact: contactActions.addContact };
+const MapDispatchToProps = { onAddContact: contactOperations.addContact };
 
 export default connect(null, MapDispatchToProps)(ContactEditer);

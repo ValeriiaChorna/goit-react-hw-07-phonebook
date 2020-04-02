@@ -2,13 +2,13 @@ import React from 'react';
 import withTheme from '../hoc/withTheme';
 import T from 'prop-types';
 
-const Button = ({ label, theme, toggleTheme }) => (
+const Button = ({ theme }) => (
   <button
-    className={theme === 'dark' ? 'btn-dark' : 'btn-light'}
+    className={theme.theme === 'dark' ? 'btn-dark' : 'btn-light'}
     type="button"
-    onClick={toggleTheme}
+    onClick={theme.toggleTheme}
   >
-    {label}
+    {theme.theme}
   </button>
 );
 
