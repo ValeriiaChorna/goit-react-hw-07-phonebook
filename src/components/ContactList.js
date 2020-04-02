@@ -1,7 +1,7 @@
 import React from 'react';
 import T from 'prop-types';
 import { connect } from 'react-redux';
-import ContactItem from './ContactItem';
+import ContactItem from './ContactListItemContainer';
 import contactsSelectors from '../redux/contacts/contactsSelectors';
 
 function ContactList({ contacts }) {
