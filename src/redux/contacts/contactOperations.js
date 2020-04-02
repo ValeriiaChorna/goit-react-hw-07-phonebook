@@ -3,11 +3,14 @@ import contactActions from './contactsActions';
 
 axios.defaults.baseURL = 'http://localhost:2000';
 
-const addContact = (name, number) => dispatch => {
-  //   axios
-  //     .get(`/contacts?name=${name}`)
-  //     .then(response => {
-  //       if ((response.data.length = 0)) {
+const addContact = (name, number) => (dispatch, getState) => {
+  const doesExistContact = getState().contacts.items.some(
+    contact => contact.name === name,
+  );
+  if (doesExistContact) {
+    alert(`${name} is allready exist in contacts.`);
+    return;
+  }
   dispatch(contactActions.addContactRequest());
   axios
     .post(`/contacts`, { name, number })
@@ -15,14 +18,6 @@ const addContact = (name, number) => dispatch => {
       dispatch(contactActions.addContactSuccess(response.data));
     })
     .catch(error => dispatch(contactActions.addContactError(error)));
-  //   }
-  //   if (response.data.length > 0) {
-  //     alert(`${name} is allready exist in contacts.`);
-  //   }
-  // })
-  // .catch(error => {
-  //   console.log(error);
-  // });
 };
 
 const fetchContacts = () => dispatch => {

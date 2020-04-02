@@ -2,6 +2,7 @@ import React from 'react';
 import T from 'prop-types';
 import { connect } from 'react-redux';
 import ContactItem from './ContactItem';
+import contactsSelectors from '../redux/contacts/contactsSelectors';
 
 function ContactList({ contacts }) {
   return (
@@ -23,13 +24,8 @@ ContactList.propTypes = {
   ).isRequired,
 };
 
-const MapStateToProps = state => {
-  const { items, filter } = state.contacts;
-  const normalizedFilter = filter.toLowerCase();
-  const getVisibleContacts = items.filter(contact =>
-    contact.name.toLowerCase().includes(normalizedFilter),
-  );
-  return { contacts: getVisibleContacts };
-};
+const MapStateToProps = state => ({
+  contacts: contactsSelectors.getVisibleContacts(state),
+});
 
 export default connect(MapStateToProps)(ContactList);

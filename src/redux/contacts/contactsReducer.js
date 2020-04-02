@@ -2,15 +2,7 @@ import { createReducer } from '@reduxjs/toolkit';
 import { combineReducers } from 'redux';
 import contactsActions from './contactsActions';
 
-const addContactFun = (state, action) => {
-  // const { name } = action.payload.name;
-  // const doesExistContact = state.some(contact => contact.name === name);
-  // if (doesExistContact) {
-  //   alert(`${name} is allready exist in contacts.`);
-  //   return state;
-  // }
-  return [...state, action.payload];
-};
+const addContactFun = (state, action) => [...state, action.payload];
 
 const removeContactFun = (state, action) =>
   state.filter(contact => contact.id !== action.payload);

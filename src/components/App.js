@@ -9,6 +9,7 @@ import Spiner from './Spiner';
 import Notification from './Notification';
 import ThemeContext from '../context/ThemeContext';
 import contactOperations from '../redux/contacts/contactOperations';
+import contactsSelectors from '../redux/contacts/contactsSelectors';
 
 class App extends Component {
   componentDidMount() {
@@ -45,8 +46,8 @@ class App extends Component {
 }
 
 const MapStateToProps = state => ({
-  isLoadingContacts: state.contacts.loading,
-  errorContacts: state.contacts.error,
+  isLoadingContacts: contactsSelectors.getLoading(state),
+  errorContacts: contactsSelectors.getError(state),
 });
 
 const mapDispatchToProps = {

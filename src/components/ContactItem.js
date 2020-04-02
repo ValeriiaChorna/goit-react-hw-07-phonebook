@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import T from 'prop-types';
 import contactsOperations from '../redux/contacts/contactOperations';
+import contactsSelectors from '../redux/contacts/contactsSelectors';
 
 function ContactItem({ name, id, number, onRemoveContact }) {
   return (
@@ -24,8 +25,8 @@ ContactItem.propTypes = {
 };
 
 const MapStateToProps = (state, ownProps) => {
-  const item = state.contacts.items.find(contact => contact.id === ownProps.id);
-  return { ...item };
+  const contact = contactsSelectors.getContactById(state, ownProps.id);
+  return { ...contact };
 };
 
 const MapDispatchToProps = (dispatch, ownProps) => ({
